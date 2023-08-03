@@ -2,6 +2,7 @@ import json
 from langchain.llms.base import LLM
 from typing import Dict, List, Any, Optional
 from dotenv import load_dotenv
+from langchain.callbacks.manager import CallbackManagerForLLMRun
 import requests,os
 load_dotenv() 
 
@@ -16,14 +17,19 @@ class Oobabooga(LLM):
     
     def __init__(self):
        super().__init__()
-       print(self.oobabooga_url)
-       print(self.chat_api_url)
+       print("########################### init Oobabooga ###########################")
+       print('oobabooga_url:',self.oobabooga_url)
+       print('chat_api_url:',self.chat_api_url)
+       print("######################################################################")
             
     @property
     def _llm_type(self) -> str:
         return "oobabooga"
 
-    def _call(self, prompt: str, stop: Optional[List[str]] = None) -> str:
+    def _call(self, prompt: str, 
+              stop: Optional[List[str]] = None,
+              run_manager: Optional[CallbackManagerForLLMRun] = None,
+              ) -> str:
         print('prompt:',prompt)
         body = {
             'user_input': prompt,
@@ -46,7 +52,7 @@ class Oobabooga(LLM):
             'preset': 'None',
             'do_sample': True,
             'temperature': self.temperature,
-            'top_p': 0.1,
+            'top_p': self.top_p,
             'typical_p': 1,
             'epsilon_cutoff': 0,  # In units of 1e-4
             'eta_cutoff': 0,  # In units of 1e-4

@@ -9,16 +9,12 @@ from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferMemory
 from oobabooga_model_impl import Oobabooga
 
-template = """You are a chatbot having a conversation with a human.
-
-chat_history:
-{chat_history}
-
+template = """
 Human: {human_input}
-Chatbot:"""
+"""
 
 prompt = PromptTemplate(
-    input_variables=["chat_history", "human_input"], template=template
+    input_variables=["human_input"], template=template
 )
 memory = ConversationBufferMemory(memory_key="chat_history")
 llm = Oobabooga()
