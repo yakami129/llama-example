@@ -24,9 +24,7 @@ class Oobabooga(LLM):
         return "oobabooga"
 
     def _call(self, prompt: str, stop: Optional[List[str]] = None) -> str:
-
         print('prompt:',prompt)
-
         body = {
             'user_input': prompt,
             'max_new_tokens': self.max_token,
