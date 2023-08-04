@@ -25,11 +25,8 @@ llm_chain = LLMChain(
     memory=memory,
 )
 
-outputA = llm_chain.predict(human_input="你好")
+outputA = llm_chain.predict(human_input="上海位于哪个位置？")
 print(outputA)
 
-outputB = llm_chain.predict(human_input="现在美国总统是谁？")
+outputB = llm_chain.predict(human_input="它有什么旅游景点？")
 print(outputB)
-
-outputC = llm_chain.predict(human_input="AI产品的发展前景怎么样？")
-print(outputC)
