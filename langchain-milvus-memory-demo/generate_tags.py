@@ -11,6 +11,6 @@ def get_tags(text):
     # 提取词性标注结果
     tags = []
     for item in results:
-        tags.append(item)
-
+        if item != ' ' and item != '?':
+            tags.append(item)
     return tags
