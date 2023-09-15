@@ -10,3 +10,9 @@ sentence-transformers
 paddlepaddle
 paddlehub
 Agently
+chatharuhi
+openai
+tiktoken
+chromadb
+zhipuai
+neomodel==5.1.1
